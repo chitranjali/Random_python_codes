@@ -3,17 +3,16 @@ def gen_number():
     return random.randint(1000,9999)
 
 def check_cows_and_bulls(guess,g_num):
-    bulls,cows,ind = 0,0,0
+    bulls,cows = 0,0
     if guess == g_num:
         print("you guessed it right!")
     else:
-        for x in guess:
-            if x in g_num:
-                if x == g_num[ind]:
+        for index, value  in enumerate(guess):
+            if value in g_num:
+                if value == g_num[index]:
                     cows = cows + 1
                 else:
                     bulls = bulls + 1
-            ind = ind + 1
         return bulls,cows
 
 g_num = str(gen_number())
