@@ -1,0 +1,15 @@
+Opening a file does NOT implicitly read nor load its contents.  Even when you do so using Python's context management protocol (the with keyword).
+
+For example if you do something like:
+
+with open('./some_big_file.txt', 'r') as f:
+   for each_line in f:
+     do_something(each_line)
+
+Then your peak memory utilization shouldn't be much larger than the longest line of the file (assuming that your do_something() function isn't doing anything to consume memory for every line you process).
+
+The csv module in the Python standard libraries also make it easy to handle your data one record at a time using csv.reader() function, for example.  So that shouldn't be your problem if you're using it correctly.
+
+Here's a link to an article a processing very large CSV and XML files with the Python standard libraries: Huge CSV and XML Files in Python
+
+If you need more help you'll want to pare down your code to something suitable for posting so we can see what you're doing and, perhaps, spot where you're getting tripped up.
